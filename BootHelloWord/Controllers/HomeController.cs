@@ -18,5 +18,27 @@ namespace BootHelloWord.Controllers
         {
             return View();
         }
+
+        public ActionResult Text()
+        {
+            return View();
+        }
+
+        public ActionResult Table()
+        {
+            return View();
+        }
+
+        public ActionResult Form()
+        {
+            return View();
+        }
+
+        public ActionResult BootstrapCss()
+        {
+            return View();
+        }
+
+        
     }
 }
