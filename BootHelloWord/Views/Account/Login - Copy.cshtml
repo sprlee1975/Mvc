@@ -38,14 +38,11 @@
         <h2 class="form-signin-heading">請登入系統</h2>
         @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "帳號", autofocus = "autofocus", required = "required" })
         @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "密碼", required = "required" })
-      
-
-
         @*<input type="text" class="form-control" placeholder="帳號" required autofocus>
             <input type="password" class="form-control" placeholder="密碼" required>*@
         <div class="checkbox">
             <label>
-                @Html.CheckBoxFor(m=>m.IsRememberMe,new { @value= "remember-me" })
+                @Html.CheckBoxFor(m=>m.RememberMe,new { @value= "remember-me" })
                 @*<input type="checkbox" value="remember-me">*@                 
                 自動登錄
             </label>

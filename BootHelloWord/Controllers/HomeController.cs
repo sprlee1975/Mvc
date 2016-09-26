@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace BootHelloWord.Controllers
 {
+    [Authorize()]
     public class HomeController : Controller
     {
         // GET: Home

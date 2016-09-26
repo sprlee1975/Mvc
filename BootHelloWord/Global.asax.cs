@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BootHelloWord.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,9 @@ namespace BootHelloWord
 
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
             //BundleTable.EnableOptimizations = true;
         }
     }
