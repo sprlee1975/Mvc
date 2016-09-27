@@ -238,6 +238,9 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -270,12 +273,9 @@
     <Content Include="Views\Home\Table.cshtml" />
     <Content Include="Views\Home\Form.cshtml" />
     <Content Include="Views\Home\BootstrapCss.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\QueryFormPartial.cshtml" />
     <Content Include="Views\Contact\ContactListPartial.cshtml" />
     <Content Include="Views\Contact\ContactPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
     <Content Include="Views\Account\Login - Copy %282%29.cshtml" />

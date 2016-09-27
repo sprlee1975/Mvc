@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+
+
+<script type="text/javascript">
+    function renderCustomerList(data) {
+        $("#contactList").html(data);
+    }
+
+
+    function showDialog(data) {
+        $("#contactDialog").html(data);
+        $("#contactDialog form")
+            .removeData("validator")
+            .removeData("unobtrusiveValidation");
+        $.validator.unobtrusive.parse($("#contactDialog form"));
+        $("#contactDialog").modal("toggle");
+    }
+
+    function reLoad(data) {
+        if (data == "OK") {
+            $("#contactDialog").modal("hide");
+            $(".form-search form").submit();
+        }
+    }
+</script>
+
+
+<div class="form-search">
+    @Html.Partial("QueryFormPartial")
+
+</div>
+<div id="contactList"></div>
+<div class="modal fade" id="contactDialog"></div>
+
+

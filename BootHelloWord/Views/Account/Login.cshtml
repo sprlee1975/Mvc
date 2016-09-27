@@ -1,0 +1,39 @@
+﻿@model LoginViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>系統用戶登錄</title>
+    @Styles.Render("~/bootstrap/css")
+</head>
+
+<body>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h2 class="form-signin-heading">請登入系統</h2>
+        @Html.ValidationSummary(true,"", new { @class = "text-danger" })
+
+        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.UserName), autofocus = "autofocus", required = "required" })
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", placeholder = Html.DisplayNameFor(x => x.Password), required = "required" })
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.DisplayNameFor(m => m.RememberMe)
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登錄</button>
+        <p>@Html.ActionLink("注册", "Register") 如果您是新的用戶</p>
+    }
+
+
+    @Scripts.Render("~/bootstrap/js")
+</body>
+</html>
