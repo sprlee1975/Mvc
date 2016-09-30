@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BootHelloWord.App_Start
+namespace BootHelloWord
 {
     public class FilterConfig
     {

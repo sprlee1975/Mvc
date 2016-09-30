@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BootHelloWord.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -40,6 +41,11 @@ namespace BootHelloWord.Controllers
             return View();
         }
 
-        
+        public ActionResult Menu()
+        {
+            return View();
+        }
+
+       
     }
 }

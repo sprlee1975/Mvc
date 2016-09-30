@@ -4,6 +4,7 @@ using BootHelloWord.Service;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
@@ -100,8 +101,21 @@ namespace BootHelloWord.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            Session.RemoveAll();
+            Session.Clear();
+            Session.Abandon();
+            return Redirect(Url.Content("~/"));
+        }
+
+        private void ExpireCookie(string name, AuthorizationContext filterContext)
+        {
+            if (filterContext.RequestContext.HttpContext.Request.Cookies[name] != null)
+            {
+                filterContext.RequestContext.HttpContext.Response.Cookies[name].Value = string.Empty;
+                filterContext.RequestContext.HttpContext.Response.Cookies[name].Expires = DateTime.Now.AddMonths(-20);
+            }
         }
 
 
@@ -116,9 +130,6 @@ namespace BootHelloWord.Controllers
         }
 
         #region Helpers
-        // Used for XSRF protection when adding external logins
-        private const string XsrfKey = "XsrfId";
-
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -129,7 +140,7 @@ namespace BootHelloWord.Controllers
 
         private async Task SignInAsync(IdentityUser user, bool isPersistent)
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
@@ -152,8 +163,6 @@ namespace BootHelloWord.Controllers
             return false;
         }
 
-
-
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -167,5 +176,5 @@ namespace BootHelloWord.Controllers
         }
 
         #endregion
-    }
+    }    
 }

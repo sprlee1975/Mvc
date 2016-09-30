@@ -1,17 +1,18 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
-@using (Ajax.BeginForm("Find", new AjaxOptions { OnSuccess = "renderCustomerList" }))
+@using (Ajax.BeginForm("Find", "Contact", new AjaxOptions
+{
+    OnSuccess = "renderCustomerList",
+    OnFailure = "failur"
+}))
 {
     <fieldset>
-        <legend>Maintain Contacts</legend>
         <label class="control-label" for="firstName">First Name. :</label>
         <input type="text" name="firstName" class="input-medium search-query" />
         <label class="control-label" for="lastName">Last Name :</label>
         <input type="text" name="lastName" class="input-medium search-query" />
-        <input type="submit" value="Retrieve" class="btn btn-primary" />
-
+        <input type="submit" value="查詢" class="btn btn-primary" />
     </fieldset>
 }

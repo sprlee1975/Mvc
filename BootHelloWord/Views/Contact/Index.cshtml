@@ -1,16 +1,20 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/_Layout.cshtml";
+    ViewBag.Title = "聯絡人管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
 <script type="text/javascript">
     function renderCustomerList(data) {
+        alert(data);
         $("#contactList").html(data);
     }
 
+    function failur() {
+        alert();
+    }
 
     function showDialog(data) {
         $("#contactDialog").html(data);
@@ -31,8 +35,7 @@
 
 
 <div class="form-search">
-    @Html.Partial("QueryFormPartial")
-
+    @Html.Partial("FilterQuickQuery")
 </div>
 <div id="contactList"></div>
 <div class="modal fade" id="contactDialog"></div>

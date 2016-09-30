@@ -1,15 +1,17 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using MvcSiteMapProvider.Collections.Specialized;
 using Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
-[assembly: OwinStartup(typeof(BootHelloWord.App_Start.Startup))]
+[assembly: OwinStartup(typeof(BootHelloWord.Startup))]
 
-namespace BootHelloWord.App_Start
+namespace BootHelloWord
 {
     public class Startup
     {

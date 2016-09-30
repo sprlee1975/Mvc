@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -10,7 +14,6 @@
     <link rel="icon" href="../../favicon.ico">
 
     @Styles.Render("~/bootstrap/css")
-    @Scripts.Render("~/bootstrap/js")
 
     <title>@ViewBag.Title</title>
 </head>
@@ -30,7 +33,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Settings</a></li>
+                    <li id="settings"><a href="#">Settings</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Help</a></li>
                 </ul>
@@ -38,12 +41,15 @@
         </div>
     </nav>
 
+
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
+        <div class="sidebar" id="menu">
+            <ul class="navbar-collapse collapse">
+                @Html.MvcSiteMap().Menu("BootstrapMenuHelperModel")
+            </ul>
+            @*<ul class="nav nav-sidebar">
                     <li class="active"><a href="#">Overview</a></li>
-                    
+
                     @Html.ActionLink("BootstrapCss", "BootstrapCss", "Home")
                     @Html.ActionLink("文字", "Text", "Home")
                     @Html.ActionLink("表格", "Table", "Home")
@@ -63,13 +69,15 @@
                     <li><a href="">Nav item again</a></li>
                     <li><a href="">One more nav</a></li>
                     <li><a href="">Another nav item</a></li>
-                </ul>
-            </div>
-            <div class="col-md-10 main">
-                <h1 class="page-header">@ViewBag.Title</h1>
-                @RenderBody()
-            </div>
+                </ul>*@
+        </div>
+        <div class="main container">
+            <h1 class="page-header">@ViewBag.Title</h1>
+            @RenderBody()
         </div>
     </div>
+
+    @Scripts.Render("~/bootstrap/js")
+    
 </body>
 </html>
